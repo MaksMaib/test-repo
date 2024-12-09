@@ -1,4 +1,3 @@
-
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -8,6 +7,8 @@ from torchvision import transforms
 from torch.utils.tensorboard import SummaryWriter
 from datetime import datetime
 from tqdm import tqdm
+import os
+
 
 
 trasform = transforms.Compose([
@@ -44,7 +45,6 @@ model.to(device)
 loss_fn = nn.CrossEntropyLoss()
 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
 writer = SummaryWriter('runs/fashion_trainer_{}'.format(timestamp))
-
 
 
 EPOCHS = 15
@@ -91,6 +91,9 @@ for epoch in range(EPOCHS):
                     { 'Training' : avg_loss, 'Validation' : avg_vloss },
                     epoch_number + 1)
     writer.flush()
+
+    if not os.path.exists("checkpoints"):
+        os.makedirs("checkpoints")
 
     if avg_vloss < best_vloss:
         best_vloss = avg_vloss
