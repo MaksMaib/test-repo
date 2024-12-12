@@ -7,62 +7,46 @@ import torch.optim as optim
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def CustomefficientnetV2M(num_classes, pretrained=True, fixed_feature_extr=True):
 
     if pretrained:
         model_ft = models.efficientnet_v2_m(weights="EfficientNet_V2_M_Weights.DEFAULT")
     else:
         model_ft = models.efficientnet_v2_m()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     model_ft.classifier[1] = nn.Linear(1280, num_classes)
     model_ft.num_classes = num_classes
