@@ -12,7 +12,7 @@ import os
 
 
 trasform = transforms.Compose([
-                                transforms.Resize((512, 512)),
+                                transforms.Resize((512, 5120)),
                                 transforms.ToTensor(),
                                 transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
                                 ])
