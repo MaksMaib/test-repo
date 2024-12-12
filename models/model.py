@@ -16,7 +16,7 @@ def CustomefficientnetV2M(num_classes, pretrained=True, fixed_feature_extr=True)
 
 
 
-    test = 'test coomments'
+    # test = 'test coomments'
 
 
     model_ft.classifier[1] = nn.Linear(1280, num_classes)
