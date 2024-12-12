@@ -12,7 +12,7 @@ import os
 
 
 trasform = transforms.Compose([
-                                transforms.Resize((128, 128)),
+                                transforms.Resize((2512, 128)),
                                 transforms.ToTensor(),
                                 transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
                                 ])
@@ -104,7 +104,7 @@ for epoch in range(EPOCHS):
 
 
 
-
+#hello
 classes = data_set.classes
 correct_pred = {classname: 0 for classname in classes}
 total_pred = {classname: 0 for classname in classes}
