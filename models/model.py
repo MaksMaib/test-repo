@@ -6,6 +6,57 @@ import torch.optim as optim
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def CustomefficientnetV2M(num_classes, pretrained=True, fixed_feature_extr=True):
 
     if pretrained:
