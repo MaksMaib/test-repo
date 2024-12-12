@@ -5,6 +5,11 @@ from torchvision import models
 import torch.optim as optim
 
 
+
+
+
+
+
 def CustomefficientnetV2M(num_classes, pretrained=True, fixed_feature_extr=True):
 
     if pretrained:
@@ -23,7 +28,7 @@ def CustomefficientnetV2M(num_classes, pretrained=True, fixed_feature_extr=True)
     return model_ft, optimizer
 
 
-def Resnet18_fake(num_classes, pretrained=True, fixed_feature_extr=True):
+def Resnet18_fake1(num_classes, pretrained=True, fixed_feature_extr=True):
 
     if pretrained:
         model_ft = models.efficientnet_v2_m(weights="EfficientNet_V2_M_Weights.DEFAULT")
