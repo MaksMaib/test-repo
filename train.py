@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torchvision
-from models.model import CustomefficientnetV2M
+from models.model import CustomefficientnetV2M, Resnet18
 from torchvision import transforms
 from torch.utils.tensorboard import SummaryWriter
 from datetime import datetime
@@ -40,7 +40,10 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 
 # loss metric and optimizer
-model, optimizer = CustomefficientnetV2M(num_classes=2, pretrained=True, fixed_feature_extr=True)
+# model, optimizer = CustomefficientnetV2M(num_classes=2, pretrained=True, fixed_feature_extr=True)
+model, optimizer = Resnet18(num_classes=2, pretrained=True, fixed_feature_extr=True)
+
+
 model.to(device)
 loss_fn = nn.CrossEntropyLoss()
 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')

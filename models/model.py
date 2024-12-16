@@ -7,7 +7,7 @@ import torch.optim as optim
 
 
 
-def CustomefficientnetV2M_test1(num_classes, pretrained=True, fixed_feature_extr=True):
+def CustomefficientnetV2M(num_classes, pretrained=True, fixed_feature_extr=True):
 
     if pretrained:
         model_ft = models.efficientnet_v2_m(weights="EfficientNet_V2_M_Weights.DEFAULT")
@@ -25,18 +25,18 @@ def CustomefficientnetV2M_test1(num_classes, pretrained=True, fixed_feature_extr
     return model_ft, optimizer
 
 
-def Resnet18_fake1123(num_classes, pretrained=True, fixed_feature_extr=True):
-
+def Resnet18(num_classes, pretrained=True, fixed_feature_extr=True):
     if pretrained:
-        model_ft = models.efficientnet_v2_m(weights="EfficientNet_V2_M_Weights.DEFAULT")
+        model_ft = models.resnet18(weights='IMAGENET1K_V1')
     else:
-        model_ft = models.efficientnet_v2_m()
+        model_ft = models.resnet18()
 
-    model_ft.classifier[1] = nn.Linear(1280, num_classes)
-    model_ft.num_classes = num_classes
+    num_ftrs = model_ft.fc.in_features
+    model_ft.fc = nn.Linear(num_ftrs, num_classes)
+
 
     if fixed_feature_extr:
-        optimizer = optim.SGD(model_ft.classifier.parameters(), lr=0.001, momentum=0.9)
+        optimizer = optim.SGD(model_ft.fc.parameters(), lr=0.001, momentum=0.9)
     else:
         optimizer = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
 
